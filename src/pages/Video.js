@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react";
 import VideoFooter from "./components/footer/VideoFooter";
+import VideoSidebar from './components/sidebar/VideoSidebar';
 import "./video.css";
 
-function video() {
+function video({likes, mensagens, shares, name, description, music, url}) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const videoRef = useRef(null);
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -25,10 +26,18 @@ function video() {
         ref={videoRef}
         onClick={handdleStart}
         loop
-        src="https://poqlymuephttfsljdabn.supabase.co/storage/v1/object/public/jornadadev/brecker2.mp4?t=2023-05-22T19%3A37%3A45.885Z"
+        src={url}
       ></video>
-      {/*Side bar*/}
-      <VideoFooter />
+      <VideoSidebar 
+        likes={likes}
+        mensagens={mensagens}
+        shares={shares}
+      />
+      <VideoFooter 
+        name={name}
+        description={description}
+        music={music}
+      />
     </div>
   );
 }
